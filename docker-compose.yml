@@ -1,0 +1,68 @@
+version: '3'
+
+services:
+
+  # MQTT container
+  mqtt:
+    container_name: mqtt
+    image: eclipse-mosquitto:${MQTT_VERSION}
+    restart: always
+    ports:
+      - 1883:1883
+    volumes:
+      - ./volumes/mqtt/config:/mosquitto/config
+      - ./volumes/mqtt/data:/mosquitto/data
+      - ./volumes/mqtt/log:/mosquitto/log
+
+
+  # Homeassistant container
+  homeassistant:
+    container_name: home-assistant
+    image: homeassistant/raspberrypi3-homeassistant:${HOMEASSISTANT_VERSION}
+    volumes:
+      - ./volumes/homeassistant:/config
+      - /etc/localtime:/etc/localtime:ro
+      #- /dev/serial/by-id/:/dev/serial/by-id/
+    environment:
+      - TZ=Africa/Johannesburg
+      - PUID=${PUID}
+      - PGID=${PGID}
+    restart: always
+    network_mode: host
+    depends_on:
+      mqtt:
+        condition: service_started
+
+  # Node-RED
+  nodered:
+    container_name: nodered
+    image: nodered/node-red:${NODERED_VERSION}
+    ports:
+      - "1880:1880"
+    volumes:
+      # Local path where all Node-RED config will be stored.
+      - <local path>:/data
+    depends_on:
+      - homeassistant
+    environment:
+      TZ: "Europe/Amsterdam"
+    user: "${LOCAL_USER}:${LOCAL_USER}"
+    restart: unless-stopped
+
+  # AppDaemon
+  appdaemon:
+    container_name: appdaemon
+    restart: unless-stopped
+    image: acockburn/appdaemon:${APPDAEMON_VERSION}
+    environment:
+      HA_URL: "http://${SERVER_IP}:8123"
+      TOKEN: "${HA_APPDAEMON_KEY}"
+      DASH_URL: "http://${SERVER_IP}:5050"
+    ports:
+      - "5050:5050"
+    volumes:
+      # Set which local directory will contain all your app daemon configuration
+      - <local config>:/conf
+    depends_on:
+      - homeassistant
+    user: "${LOCAL_USER}:${LOCAL_USER}"
