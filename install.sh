@@ -3,6 +3,7 @@
 CURRENTUSERNAME=nelis
 
 echo "Sudo User: $CURRENTUSERNAME"
+#read -p "Type in the username you would like to use" CURRENTUSERNAME
 
 SUDO=
 if [ "$UID" != "0" ]; then
@@ -46,12 +47,12 @@ $SUDO usermod -a -G docker $CURRENTUSERNAME
 $SUDO exec sg docker newgrp `id -gn`
 
 cd /home/$CURRENTUSERNAME
-git clone https://github.com/ParagonIntegrations/axpert_homeassistant.git
+git clone https://github.com/ParagonIntegrations/SecurityCam.git
 
-cd /home/$CURRENTUSERNAME/axpert_homeassistant/volumes/homeassistant
+cd /home/$CURRENTUSERNAME/SecurityCam/volumes/homeassistant
 #tar -xzvf storage.tar.gz
 #$SUDO rm /home/pi/axpert_homeassistant/volumes/homeassistant/.storage/core.restore_state
 
-cd /home/$CURRENTUSERNAME/axpert_homeassistant
+cd /home/$CURRENTUSERNAME/SecurityCam
 $SUDO git checkout develop
 # docker-compose up -d
