@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CURRENTUSERNAME=nelis
+CURRENTUSERNAME=pi
 
 echo "Sudo User: $CURRENTUSERNAME"
 #read -p "Type in the username you would like to use" CURRENTUSERNAME
