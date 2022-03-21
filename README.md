@@ -1,0 +1,1 @@
+curl -s https://raw.githubusercontent.com/ParagonIntegrations/SecurityCam/master/install.sh?$(date +%s) | sudo bash
