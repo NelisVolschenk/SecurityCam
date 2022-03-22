@@ -8,3 +8,8 @@ cameras:
         - path: rtsp://admin:nelis342256@192.168.1.144:554/Streaming/Channels/101
           roles:
             - rtmp
+
+ffmpeg:
+  hwaccel_args:
+    - -c:v
+    - h264_v4l2m2m
