@@ -1,5 +1,5 @@
 mqtt:
-  host: 192.168.1.128
+  host: 192.168.1.118
 
 cameras:
   cam1:
@@ -19,7 +19,16 @@ cameras:
 #            - detect
 #            - rtmp
 
-ffmpeg:
-  hwaccel_args:
-    - -c:v
-    - h264_v4l2m2m
+#ffmpeg:
+#  hwaccel_args:
+#    - -c:v
+#    - h264_v4l2m2m
+
+#ffmpeg:
+#  hwaccel_args:
+#    - -hwaccel
+#    - vaapi
+#    - -hwaccel_device
+#    - /dev/dri/renderD128
+#    - -hwaccel_output_format
+#    - yuv420p
