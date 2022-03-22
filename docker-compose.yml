@@ -18,8 +18,7 @@ services:
   # Homeassistant container
   homeassistant:
     container_name: home-assistant
-    image: homeassistant/home-assistant:${HOMEASSISTANT_VERSION}
-#    image: homeassistant/raspberrypi3-homeassistant:${HOMEASSISTANT_VERSION}
+    image: homeassistant/raspberrypi3-homeassistant:${HOMEASSISTANT_VERSION}
     volumes:
       - ./volumes/homeassistant:/config
       - /etc/localtime:/etc/localtime:ro
