@@ -25,7 +25,7 @@ cameras:
             - detect
             - rtmp
     detect:
-      fps: 5
+      fps: 1
 
 #  cam2:
 #    ffmpeg:
