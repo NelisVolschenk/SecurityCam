@@ -57,6 +57,9 @@ services:
       - "1935:1935" # RTMP feeds
     environment:
       - FRIGATE_RTSP_PASSWORD:${FRIGATE_PASSWORD}
+    depends_on:
+      mqtt:
+        condition: service_started
 #
 #  # Node-RED
 #  nodered:
