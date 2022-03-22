@@ -1,5 +1,5 @@
 mqtt:
-  host: 0.0.0.0
+  host: localhost
 
 cameras:
   cam1:
