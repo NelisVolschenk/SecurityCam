@@ -33,6 +33,7 @@ services:
       mqtt:
         condition: service_started
 
+  # The frigate container
   frigate:
     container_name: frigate
     privileged: true # this may not be necessary for all setups
@@ -55,7 +56,7 @@ services:
       - "5000:5000"
       - "1935:1935" # RTMP feeds
     environment:
-      FRIGATE_RTSP_PASSWORD:${FRIGATE_PASSWORD}
+      - FRIGATE_RTSP_PASSWORD:${FRIGATE_PASSWORD}
 #
 #  # Node-RED
 #  nodered:
