@@ -4,10 +4,6 @@ mqtt:
 cameras:
   cam1:
     ffmpeg:
-      input_args:
-        - -fflags nobuffer
-        - -fflags discardcorrupt
-        - -flags low_delay
       inputs:
         - path: rtsp://admin:nelis342256@192.168.1.144:554/Streaming/Channels/101
           roles:
