@@ -2,17 +2,17 @@ version: '3'
 
 services:
 
-#  # MQTT container
-#  mqtt:
-#    container_name: mqtt
-#    image: eclipse-mosquitto:${MQTT_VERSION}
-#    restart: always
-#    ports:
-#      - 1883:1883
-#    volumes:
-#      - ./volumes/mqtt/config:/mosquitto/config
-#      - ./volumes/mqtt/data:/mosquitto/data
-#      - ./volumes/mqtt/log:/mosquitto/log
+  # MQTT container
+  mqtt:
+    container_name: mqtt
+    image: eclipse-mosquitto:${MQTT_VERSION}
+    restart: always
+    ports:
+      - 1883:1883
+    volumes:
+      - ./volumes/mqtt/config:/mosquitto/config
+      - ./volumes/mqtt/data:/mosquitto/data
+      - ./volumes/mqtt/log:/mosquitto/log
 
 
   # Homeassistant container
@@ -29,9 +29,9 @@ services:
       - PGID=${PGID}
     restart: always
     network_mode: host
-#    depends_on:
-#      mqtt:
-#        condition: service_started
+    depends_on:
+      mqtt:
+        condition: service_started
 #
 #  # Node-RED
 #  nodered:
