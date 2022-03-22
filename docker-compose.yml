@@ -2,17 +2,17 @@ version: '3'
 
 services:
 
-  # MQTT container
-  mqtt:
-    container_name: mqtt
-    image: eclipse-mosquitto:${MQTT_VERSION}
-    restart: always
-    ports:
-      - 1883:1883
-    volumes:
-      - ./volumes/mqtt/config:/mosquitto/config
-      - ./volumes/mqtt/data:/mosquitto/data
-      - ./volumes/mqtt/log:/mosquitto/log
+#  # MQTT container
+#  mqtt:
+#    container_name: mqtt
+#    image: eclipse-mosquitto:${MQTT_VERSION}
+#    restart: always
+#    ports:
+#      - 1883:1883
+#    volumes:
+#      - ./volumes/mqtt/config:/mosquitto/config
+#      - ./volumes/mqtt/data:/mosquitto/data
+#      - ./volumes/mqtt/log:/mosquitto/log
 
 
   # Homeassistant container
@@ -29,40 +29,40 @@ services:
       - PGID=${PGID}
     restart: always
     network_mode: host
-    depends_on:
-      mqtt:
-        condition: service_started
-
-  # Node-RED
-  nodered:
-    container_name: nodered
-    image: nodered/node-red:${NODERED_VERSION}
-    ports:
-      - "1880:1880"
-    volumes:
-      # Local path where all Node-RED config will be stored.
-      - ./volumes/nodered:/data
-    depends_on:
-      - homeassistant
-    environment:
-      - TZ=Africa/Johannesburg
-    user: "${PUID}:${PGID}"
-    restart: unless-stopped
-
-  # AppDaemon
-  appdaemon:
-    container_name: appdaemon
-    restart: unless-stopped
-    image: acockburn/appdaemon:${APPDAEMON_VERSION}
-    environment:
-      HA_URL: "http://${SERVER_IP}:8123"
-      TOKEN: "${HA_APPDAEMON_KEY}"
-      DASH_URL: "http://${SERVER_IP}:5050"
-    ports:
-      - "5050:5050"
-    volumes:
-      # Set which local directory will contain all your app daemon configuration
-      - ./volumes/appdaemon:/conf
-    depends_on:
-      - homeassistant
-    user: "${PUID}:${PGID}"
+#    depends_on:
+#      mqtt:
+#        condition: service_started
+#
+#  # Node-RED
+#  nodered:
+#    container_name: nodered
+#    image: nodered/node-red:${NODERED_VERSION}
+#    ports:
+#      - "1880:1880"
+#    volumes:
+#      # Local path where all Node-RED config will be stored.
+#      - ./volumes/nodered:/data
+#    depends_on:
+#      - homeassistant
+#    environment:
+#      - TZ=Africa/Johannesburg
+#    user: "${PUID}:${PGID}"
+#    restart: unless-stopped
+#
+#  # AppDaemon
+#  appdaemon:
+#    container_name: appdaemon
+#    restart: unless-stopped
+#    image: acockburn/appdaemon:${APPDAEMON_VERSION}
+#    environment:
+#      HA_URL: "http://${SERVER_IP}:8123"
+#      TOKEN: "${HA_APPDAEMON_KEY}"
+#      DASH_URL: "http://${SERVER_IP}:5050"
+#    ports:
+#      - "5050:5050"
+#    volumes:
+#      # Set which local directory will contain all your app daemon configuration
+#      - ./volumes/appdaemon:/conf
+#    depends_on:
+#      - homeassistant
+#    user: "${PUID}:${PGID}"
