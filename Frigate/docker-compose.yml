@@ -22,3 +22,4 @@
       - "1935:1935" # RTMP feeds
     environment:
       - FRIGATE_RTSP_PASSWORD:${FRIGATE_PASSWORD}
+      -
