@@ -22,10 +22,10 @@ cameras:
     detect:
       fps: 2
 
-#ffmpeg:
-#  hwaccel_args:
-#    - -c:v
-#    - h264_v4l2m2m
+ffmpeg:
+  hwaccel_args:
+    - -c:v
+    - h264_v4l2m2m
 
 #ffmpeg:
 #  hwaccel_args:
