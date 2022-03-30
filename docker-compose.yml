@@ -15,38 +15,38 @@ services:
       - ./volumes/mqtt/log:/mosquitto/log
 
 
-  # Homeassistant container
-  homeassistant:
-    container_name: home-assistant
-    image: homeassistant/raspberrypi3-homeassistant:${HOMEASSISTANT_VERSION}
-    volumes:
-      - ./volumes/homeassistant:/config
-      - /etc/localtime:/etc/localtime:ro
-      #- /dev/serial/by-id/:/dev/serial/by-id/
-    environment:
-      - TZ=Africa/Johannesburg
-      - PUID=${PUID}
-      - PGID=${PGID}
-    restart: unless-stopped
-    network_mode: host
-    depends_on:
-      - mqtt
-
-  # Node-RED
-  nodered:
-    container_name: nodered
-    image: nodered/node-red:${NODERED_VERSION}
-    ports:
-      - "1880:1880"
-    volumes:
-      # Local path where all Node-RED config will be stored.
-      - ./volumes/nodered:/data
-    depends_on:
-      - homeassistant
-    environment:
-      - TZ=Africa/Johannesburg
-    user: "${PUID}:${PGID}"
-    restart: unless-stopped
+#  # Homeassistant container
+#  homeassistant:
+#    container_name: home-assistant
+#    image: homeassistant/raspberrypi3-homeassistant:${HOMEASSISTANT_VERSION}
+#    volumes:
+#      - ./volumes/homeassistant:/config
+#      - /etc/localtime:/etc/localtime:ro
+#      #- /dev/serial/by-id/:/dev/serial/by-id/
+#    environment:
+#      - TZ=Africa/Johannesburg
+#      - PUID=${PUID}
+#      - PGID=${PGID}
+#    restart: unless-stopped
+#    network_mode: host
+#    depends_on:
+#      - mqtt
+#
+#  # Node-RED
+#  nodered:
+#    container_name: nodered
+#    image: nodered/node-red:${NODERED_VERSION}
+#    ports:
+#      - "1880:1880"
+#    volumes:
+#      # Local path where all Node-RED config will be stored.
+#      - ./volumes/nodered:/data
+#    depends_on:
+#      - homeassistant
+#    environment:
+#      - TZ=Africa/Johannesburg
+#    user: "${PUID}:${PGID}"
+#    restart: unless-stopped
 #
 #  # AppDaemon
 #  appdaemon:
