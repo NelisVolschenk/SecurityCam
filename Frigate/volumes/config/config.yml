@@ -13,7 +13,7 @@ snapshots:
   bounding_box: True
 
 rtmp:
-  enabled: True
+  enabled: False
 
 record:
   enabled: True
