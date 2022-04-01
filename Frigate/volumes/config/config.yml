@@ -2,9 +2,11 @@ mqtt:
   host: 192.168.1.128
 
 detect:
+  enabled: True
   width: 1080
   height: 960
   fps: 1
+  max_disappeared: 5
 
 snapshots:
   enabled: True
@@ -18,6 +20,9 @@ record:
   events:
     pre_capture: 10
     post_capture: 10
+
+birdseye:
+  enabled: False
 
 logger:
   default: debug
