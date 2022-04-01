@@ -6,6 +6,9 @@ detect:
   height: 960
   fps: 1
 
+snapshots:
+  enabled: True
+  bounding_box: True
 
 rtmp:
   enabled: False
@@ -25,6 +28,8 @@ cameras:
         - path: rtsp://admin:nelis342256@192.168.1.144:554/Streaming/Channels/101
           roles:
             - detect
+            - clips
+            - record
 
 #  cam2:
 #    ffmpeg:
