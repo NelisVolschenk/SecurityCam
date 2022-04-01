@@ -1,6 +1,19 @@
 mqtt:
   host: 192.168.1.128
 
+detect:
+  width: 960
+  height: 1080
+  fps: 2
+
+logger:
+  default: debug
+
+detectors:
+  cpu1:
+    type: cpu
+    num_threads: 3
+
 cameras:
   cam1:
     ffmpeg:
@@ -9,8 +22,6 @@ cameras:
           roles:
             - detect
             - rtmp
-    detect:
-      fps: 2
 
 #  cam2:
 #    ffmpeg:
@@ -19,13 +30,16 @@ cameras:
 #          roles:
 #            - detect
 #            - rtmp
-#    detect:
-#      fps: 2
+
+#ffmpeg:
+#  hwaccel_args:
+#    - -c:v
+#    - h264_v4l2m2m
 
 ffmpeg:
   hwaccel_args:
     - -c:v
-    - h264_v4l2m2m
+    - h264_mmal
 
 #ffmpeg:
 #  hwaccel_args:
