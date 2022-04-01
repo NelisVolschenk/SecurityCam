@@ -6,6 +6,10 @@ detect:
   height: 1080
   fps: 2
 
+
+rtmp:
+  enabled: False
+
 logger:
   default: debug
 
@@ -21,7 +25,6 @@ cameras:
         - path: rtsp://admin:nelis342256@192.168.1.144:554/Streaming/Channels/101
           roles:
             - detect
-            - rtmp
 
 #  cam2:
 #    ffmpeg:
@@ -29,17 +32,16 @@ cameras:
 #        - path: rtsp://admin:nelis342256@192.168.1.144:554/Streaming/Channels/301
 #          roles:
 #            - detect
-#            - rtmp
-
-#ffmpeg:
-#  hwaccel_args:
-#    - -c:v
-#    - h264_v4l2m2m
 
 ffmpeg:
   hwaccel_args:
     - -c:v
-    - h264_mmal
+    - h264_v4l2m2m
+
+#ffmpeg:
+#  hwaccel_args:
+#    - -c:v
+#    - h264_mmal
 
 #ffmpeg:
 #  hwaccel_args:
