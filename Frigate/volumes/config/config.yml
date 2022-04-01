@@ -11,7 +11,13 @@ snapshots:
   bounding_box: True
 
 rtmp:
-  enabled: False
+  enabled: True
+
+record:
+  enabled: True
+  events:
+    pre_capture: 10
+    post_capture: 10
 
 logger:
   default: debug
