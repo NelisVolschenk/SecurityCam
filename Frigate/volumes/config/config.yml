@@ -4,7 +4,7 @@ mqtt:
 detect:
   width: 1080
   height: 960
-  fps: 2
+  fps: 1
 
 
 rtmp:
