@@ -28,8 +28,11 @@ cameras:
         - path: rtsp://admin:nelis342256@192.168.1.144:554/Streaming/Channels/102
           roles:
             - detect
+        - path: rtsp://admin:nelis342256@192.168.1.144:554/Streaming/Channels/101
+          roles:
             - clips
             - record
+            - rtmp
 
   cam2:
     ffmpeg:
@@ -39,6 +42,7 @@ cameras:
             - detect
             - clips
             - record
+            - rtmp
 
 #ffmpeg:
 #  hwaccel_args:
