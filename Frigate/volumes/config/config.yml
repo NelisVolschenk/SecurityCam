@@ -30,7 +30,10 @@ logger:
 detectors:
   cpu1:
     type: cpu
-    num_threads: 3
+    num_threads: 4
+  cpu2:
+    type: cpu
+    num_threads: 4
 
 cameras:
   cam1:
