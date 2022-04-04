@@ -39,7 +39,7 @@ cameras:
   cam1:
     ffmpeg:
       inputs:
-        - path: rtsp://admin:nelis342256@192.168.1.144:554/Streaming/Channels/102
+        - path: rtsp://admin:nelis342256@192.168.1.144:554/Streaming/Channels/101
           roles:
             - detect
             - record
@@ -49,7 +49,7 @@ cameras:
   cam2:
     ffmpeg:
       inputs:
-        - path: rtsp://admin:nelis342256@192.168.1.144:554/Streaming/Channels/302
+        - path: rtsp://admin:nelis342256@192.168.1.144:554/Streaming/Channels/301
           roles:
             - detect
             - record
